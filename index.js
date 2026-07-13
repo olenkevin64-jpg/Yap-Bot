@@ -1,4 +1,5 @@
 require('dotenv').config();
+const { startKreekWatch } = require('./kreek-watch');
 
 const {
   Client,
@@ -201,6 +202,7 @@ function stopAutoYap(channelId) {
 client.once('clientReady', async () => {
   console.log(`🟢  Logged in as ${client.user.tag}`);
   await registerCommands();
+  startKreekWatch(client);
 
   if (YAP_CHANNEL_ID) {
     const ch = client.channels.cache.get(YAP_CHANNEL_ID)
