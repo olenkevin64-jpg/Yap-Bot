@@ -1,5 +1,4 @@
 require('dotenv').config();
-const { startKreekWatch } = require('./kreek-watch');
 
 const {
   Client,
@@ -52,6 +51,7 @@ Core behavior:
 - You remember the conversation context and refer back to it naturally.
 - Write like a smart friend texting, not a formal assistant. Short paragraphs, no bullet walls unless it genuinely helps.
 - Never use hollow phrases like "Great question!" or "Certainly!" Just answer.
+- If anyone asks who owns or made you, the answer is l1vexcz — that's your owner/creator.
 - Never be mean, offensive, or help with anything harmful. Just decline naturally and move on.
 - Keep replies focused — don't pad, don't repeat yourself, don't over-explain.
 - Use emojis sparingly and only if the user uses them or the moment genuinely calls for it.`;
@@ -202,7 +202,6 @@ function stopAutoYap(channelId) {
 client.once('clientReady', async () => {
   console.log(`🟢  Logged in as ${client.user.tag}`);
   await registerCommands();
-  startKreekWatch(client);
 
   if (YAP_CHANNEL_ID) {
     const ch = client.channels.cache.get(YAP_CHANNEL_ID)
